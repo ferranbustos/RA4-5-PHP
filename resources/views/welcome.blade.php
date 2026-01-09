@@ -20,13 +20,25 @@
         <li><a href=/filmout/newFilms>Pelis nuevas</a></li>
         <li><a href=/filmout/films>Pelis</a></li>
     </ul>
+    <h1>Añadir Pelicula</h1>
+    <form action="{{ action('\app\Http\Controllers\FilmController@recibirinfo') }}"
+     method="POST">
+     {{ csrf_field() }}
+    Nombre: <input type="text" name="nombre"><br>
+    Año: <input type="number" name="año"><br>
+    Genero: <input type="text" name="genero"><br>
+    Pais: <input type="text" name="Pais"><br>
+    Duracion: <input type="number" name="duracion"><br>
+    Imagen URL: <input type="img" name="imagen"><br>
+    <input type="submit">
+    </form>
+
+    
     <!-- Add Bootstrap JS and Popper.js (required for Bootstrap) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-    <!-- Include any additional HTML or Blade directives here -->
-
+    
 </body>
 
 </html>
