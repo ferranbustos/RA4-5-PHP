@@ -1,42 +1,58 @@
 [
     {
-        "name": "La Rosa Púrpura del Cairo",
+        "name": "La Rosa P\u00farpura del Cairo",
         "year": 1985,
         "genre": "Drama",
-        "country":"Somalia",
-        "duration":135,
-        "img_url": "https://es.web.img2.acsta.net/medias/nmedia/18/79/45/34/20253823.jpg"
+        "country": "Somalia",
+        "duration": 135,
+        "img_url": "https:\/\/es.web.img2.acsta.net\/medias\/nmedia\/18\/79\/45\/34\/20253823.jpg"
     },
     {
         "name": "El Club de los Cinco",
         "year": 1985,
         "genre": "Comedia",
-        "country":"Súdan",
-        "duration":199,
-        "img_url": "https://pics.filmaffinity.com/El_club_de_los_cinco-192309838-large.jpg"
+        "country": "S\u00fadan",
+        "duration": 199,
+        "img_url": "https:\/\/pics.filmaffinity.com\/El_club_de_los_cinco-192309838-large.jpg"
     },
     {
         "name": "Forrest Gump",
         "year": 1994,
         "genre": "Drama",
-        "country":"Nepal",
-        "duration":185,
-        "img_url": "https://pics.filmaffinity.com/Forrest_Gump-212765827-large.jpg"
+        "country": "Nepal",
+        "duration": 185,
+        "img_url": "https:\/\/pics.filmaffinity.com\/Forrest_Gump-212765827-large.jpg"
     },
     {
         "name": "Arrival",
         "year": 2016,
-        "genre": "Ciencia Ficción",
-        "country":"Afghanistán",
-        "duration":105,
-        "img_url": "https://pics.filmaffinity.com/La_llegada-686966912-large.jpg"
+        "genre": "Ciencia Ficci\u00f3n",
+        "country": "Afghanist\u00e1n",
+        "duration": 105,
+        "img_url": "https:\/\/pics.filmaffinity.com\/La_llegada-686966912-large.jpg"
     },
     {
         "name": "As Bestas",
         "year": 2022,
         "genre": "Drama",
-        "country":"Turkmenistán",
-        "duration":105,
-        "img_url": "https://pics.filmaffinity.com/As_bestas-275688233-large.jpg"
+        "country": "Turkmenist\u00e1n",
+        "duration": 105,
+        "img_url": "https:\/\/pics.filmaffinity.com\/As_bestas-275688233-large.jpg"
+    },
+    {
+        "name": "Torrente 5",
+        "year": 2016,
+        "genre": "hola",
+        "country": "espa\u00f1a",
+        "duration": 190,
+        "img_url": "https:\/\/pics.filmaffinity.com\/Torrente_5_Operacion_Eurovegas-531638431-large.jpg"
+    },
+    {
+        "name": "The Amazing Spider-Man",
+        "year": 2012,
+        "genre": "Acci\u00f3n",
+        "country": "Estados Unidos",
+        "duration": 136,
+        "img_url": "https:\/\/ibb.co\/ycrS4GLf"
     }
 ]
