@@ -1,62 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.master')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movies List</title>
+@section('title', 'Welcome')
 
-    <!-- Add Bootstrap CSS link -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-</head>
+@section('content')
 
-<body class="container">
+<h1 class="mb-4">Lista de Películas</h1>
 
-    <h1 class="mt-4">Lista de Peliculas</h1>
-    <ul>
-        <li><a href="/filmout/oldFilms">Pelis antiguas</a></li>
-        <li><a href="/filmout/newFilms">Pelis nuevas</a></li>
-        <li><a href="/filmout/films">Pelis</a></li>
-    </ul>
-
-    <h2>Añadir Pelicula</h2>
-
-   @if(session('error'))
-    <p style="color:red">{{ session('error') }}</p>
+@if(session('error'))
+    <div class="alert alert-danger">{{ session('error') }}</div>
 @endif
 
+<div class="card">
+    <div class="card-header">Añadir Película</div>
+    <div class="card-body">
+        <form action="{{ route('film') }}" method="POST">
+            {{ csrf_field() }}
 
-    
-    <form action="{{ route('film') }}" method="POST">
-    {{ csrf_field() }}
+            <div class="form-group">
+                <label>Nombre</label>
+                <input type="text" name="nombre" class="form-control" required>
+            </div>
 
+            <div class="form-group">
+                <label>Año</label>
+                <input type="number" name="año" class="form-control" required>
+            </div>
 
-        Nombre:
-        <input type="text" name="nombre"><br><br>
+            <div class="form-group">
+                <label>Género</label>
+                <input type="text" name="genero" class="form-control" required>
+            </div>
 
-        Año:
-        <input type="number" name="año"><br><br>
+            <div class="form-group">
+                <label>País</label>
+                <input type="text" name="Pais" class="form-control" required>
+            </div>
 
-        Genero:
-        <input type="text" name="genero"><br><br>
+            <div class="form-group">
+                <label>Duración</label>
+                <input type="number" name="duracion" class="form-control" required>
+            </div>
 
-        Pais:
-        <input type="text" name="Pais"><br><br>
+            <div class="form-group">
+                <label>Imagen URL</label>
+                <input type="text" name="imagen" class="form-control" required>
+            </div>
 
-        Duracion:
-        <input type="number" name="duracion"><br><br>
+            <button class="btn btn-primary">Guardar</button>
+        </form>
+    </div>
+</div>
 
-        Imagen URL:
-        <input type="text" name="imagen"><br><br>
-
-        <input type="submit" value="Añadir película">
-    </form>
-
-    <!-- Add Bootstrap JS and Popper.js (required for Bootstrap) -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-</body>
-
-</html>
+@endsection

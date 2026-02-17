@@ -1,42 +1,31 @@
-<h1>{{ $title }}</h1>
+@extends('layouts.master')
+
+@section('title', 'Grouped')
+
+@section('content')
+
+<h1 class="mb-4">{{ $title }}</h1>
 
 @if(empty($grouped))
-    <font color="red">No se ha encontrado ninguna película</font>
+    <div class="alert alert-danger">No hay películas</div>
 @else
     @foreach($grouped as $genero => $anyos)
-        <h2>Género: {{ $genero }}</h2>
-
-        @foreach($anyos as $anyo => $films)
-            <h3>Año: {{ $anyo }}</h3>
-
-            <table border="1" cellpadding="5">
-                <tr>
-                    <th>name</th>
-                    <th>year</th>
-                    <th>genre</th>
-                    <th>country</th>
-                    <th>duration</th>
-                    <th>img_url</th>
-                </tr>
-
-                @foreach($films as $film)
-                    <tr>
-                        <td>{{ $film['name'] }}</td>
-                        <td>{{ $film['year'] }}</td>
-                        <td>{{ $film['genre'] }}</td>
-                        <td>{{ $film['country'] }}</td>
-                        <td>{{ $film['duration'] }}</td>
-                        <td>
-                            <img src="{{ $film['img_url'] }}" style="width: 100px; height: 120px;" />
-                        </td>
-                    </tr>
+        <div class="card mb-3">
+            <div class="card-header bg-dark text-white">
+                Género: {{ $genero }}
+            </div>
+            <div class="card-body">
+                @foreach($anyos as $anyo => $films)
+                    <h5>Año: {{ $anyo }}</h5>
+                    <ul>
+                        @foreach($films as $film)
+                            <li>{{ $film['name'] }} ({{ $film['country'] }})</li>
+                        @endforeach
+                    </ul>
                 @endforeach
-            </table>
-
-            <br>
-        @endforeach
-        <hr>
+            </div>
+        </div>
     @endforeach
 @endif
 
-<a href="/">Volver</a>
+@endsection

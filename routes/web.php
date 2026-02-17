@@ -15,15 +15,18 @@ Route::middleware('url')->group(function() {
     });
 });
 
-
 Route::middleware('year')->group(function() {
     Route::group(['prefix'=>'filmout'], function(){
 
-        Route::get('oldFilms/{year?}', [FilmController::class, "listOldFilms"])->name('oldFilms');
-        Route::get('newFilms/{year?}', [FilmController::class, "listNewFilms"])->name('newFilms');
-        Route::get('films/{year?}/{genre?}', [FilmController::class, "listFilms"])->name('listFilms');
+        Route::get('oldFilms/{year?}',[FilmController::class, "listOldFilms"])->name('oldFilms');
+        Route::get('newFilms/{year?}',[FilmController::class, "listNewFilms"])->name('newFilms');
+        Route::get('films/{year?}/{genre?}',[FilmController::class, "listFilms"])->name('listFilms');
 
-        
+        // ✅ AÑADIDAS
+        Route::get('countFilms', [FilmController::class, "countFilms"])->name('countFilms');
+        Route::get('sortFilms/{order?}', [FilmController::class, "sortFilms"])->name('sortFilms');
+        Route::get('groupFilms', [FilmController::class, "groupFilmsByGenreAndYear"])->name('groupFilms');
+
     });
 });
 Route::get('/filmin/film', function () {
