@@ -46,9 +46,14 @@
                 <input type="text" name="imagen" class="form-control" required>
             </div>
 
-            <button class="btn btn-primary">Guardar</button>
-        </form>
+            <div class="card mt-4">
+    <div class="card-header">Lista de Actores</div>
+    <div class="card-body">
+        <ul class="list-group">
+            <li class="list-group-item">
+                <a href="{{ route('actors') }}">Ver todos los Actores</a>
+            </li>
+        </ul>
     </div>
 </div>
-
 @endsection
