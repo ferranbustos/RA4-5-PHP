@@ -71,6 +71,9 @@
                     <button type="submit" class="btn btn-primary btn-sm">Buscar</button>
                 </form>
             </li>
+            <li class="list-group-item">
+                <a href="{{ route('countActors') }}">Contador de Actores</a>
+            </li>
         </ul>
     </div>
 </div>

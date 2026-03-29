@@ -47,4 +47,5 @@ class ActorController extends Controller
             'title' => $title
         ]);
     }
+    
 }

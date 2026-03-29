@@ -31,7 +31,7 @@ Route::get('/filmdetail/film', function () {
 });
 
 Route::group(['prefix' => 'actorout'], function(){
-    Route::get('actors', [App\Http\Controllers\ActorController::class, 'listActors'])->name('actors');
     Route::get('actors', [ActorController::class, 'listActors'])->name('actors');
-Route::get('actorsByDecade/{decade?}', [ActorController::class, 'listActorsByDecade'])->name('actorsByDecade')->middleware('year');
+    Route::get('actorsByDecade/{decade?}', [ActorController::class, 'listActorsByDecade'])->name('actorsByDecade')->middleware('year');
+    Route::get('countActors', [ActorController::class, 'countActors'])->name('countActors');
 });
