@@ -8,4 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Film extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'year',
+        'genre',
+        'country',
+        'duration',
+        'img_url'
+    ];
+
+    /**
+     * Relationship with actors (many to many)
+     */
+    public function actors()
+    {
+        return $this->belongsToMany(Actor::class, 'actor_film');
+    }
 }

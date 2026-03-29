@@ -20,16 +20,16 @@ class FilmController extends Controller
     }
 
     /**
-     * List films older than input year
+     * List films older than input year 
      * if year is not infomed 2000 year will be used as criteria
      */
     public function listOldFilms($year = null)
-    {
+    {        
         $old_films = [];
         if (is_null($year))
-        $year = 2000;
-
-        $title = "Listado de Pelis Antiguas (Antes de $year)";
+            $year = 2000;
+    
+        $title = "Listado de Pelis Antiguas (Antes de $year)";    
         $films = FilmController::readFilms();
 
         foreach ($films as $film) {
@@ -87,7 +87,9 @@ class FilmController extends Controller
         return view("films.list", ["films" => $films_filtered, "title" => $title]);
     }
 
-  
+    /**
+     * Check if film exists by name
+     */
     public function isFilm($filmName)
     {
         $films = FilmController::readFilms();
@@ -105,7 +107,9 @@ class FilmController extends Controller
         return false;
     }
 
-  
+    /**
+     * Create a new film
+     */
     public function createFilm(Request $request)
     {
         $name = $request->input('nombre');
@@ -136,56 +140,61 @@ class FilmController extends Controller
         return $this->listFilms();
     }
 
-public function countFilms()
-{
-    $films = FilmController::readFilms();
-    $total = count($films);
+    /**
+     * Count total films
+     */
+    public function countFilms()
+    {
+        $films = FilmController::readFilms();
+        $total = count($films);
 
-    $title = "Total de películas";
-    return view('films.count', ["title" => $title, "total" => $total]);
-}
-
-
-public function sortFilms($order = "asc")
-{
-    $films = FilmController::readFilms();
-
-    usort($films, function($a, $b) {
-        return $a['year'] <=> $b['year'];
-    });
-
-    if (strtolower($order) == "desc") {
-        $films = array_reverse($films);
+        $title = "Total de películas";
+        return view('films.count', ["title" => $title, "total" => $total]);
     }
 
-    $title = "Películas ordenadas por año (" . strtoupper($order) . ")";
-    return view('films.list', ["films" => $films, "title" => $title]);
-}
+    /**
+     * Sort films by year
+     */
+    public function sortFilms($order = "asc")
+    {
+        $films = FilmController::readFilms();
 
+        usort($films, function($a, $b) {
+            return $a['year'] <=> $b['year'];
+        });
 
-public function groupFilmsByGenreAndYear()
-{
-    $films = FilmController::readFilms();
-    $grouped = [];
+        if (strtolower($order) == "desc") {
+            $films = array_reverse($films);
+        }
 
-    foreach ($films as $film) {
-        $genero = $film['genre'];
-        $anyo = $film['year'];
-
-        if (!isset($grouped[$genero])) $grouped[$genero] = [];
-        if (!isset($grouped[$genero][$anyo])) $grouped[$genero][$anyo] = [];
-
-        $grouped[$genero][$anyo][] = $film;
+        $title = "Películas ordenadas por año (" . strtoupper($order) . ")";
+        return view('films.list', ["films" => $films, "title" => $title]);
     }
 
-    ksort($grouped);
-    foreach ($grouped as $genero => $anyos) {
-        ksort($grouped[$genero]);
+    /**
+     * Group films by genre and year
+     */
+    public function groupFilmsByGenreAndYear()
+    {
+        $films = FilmController::readFilms();
+        $grouped = [];
+
+        foreach ($films as $film) {
+            $genero = $film['genre'];
+            $anyo = $film['year'];
+
+            if (!isset($grouped[$genero])) $grouped[$genero] = [];
+            if (!isset($grouped[$genero][$anyo])) $grouped[$genero][$anyo] = [];
+
+            $grouped[$genero][$anyo][] = $film;
+        }
+
+        ksort($grouped);
+        foreach ($grouped as $genero => $anyos) {
+            ksort($grouped[$genero]);
+        }
+
+        $title = "Películas agrupadas por género y año";
+        return view('films.grouped', ["title" => $title, "grouped" => $grouped]);
     }
-
-    $title = "Películas agrupadas por género y año";
-    return view('films.grouped', ["title" => $title, "grouped" => $grouped]);
-}
-
-
 }
