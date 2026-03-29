@@ -197,4 +197,24 @@ class FilmController extends Controller
         $title = "Películas agrupadas por género y año";
         return view('films.grouped', ["title" => $title, "grouped" => $grouped]);
     }
+    /**
+ * Get all films with their actors (API)
+ */
+public function index()
+{
+    try {
+        $films = Film::with('actors')->get();
+        
+        return response()->json([
+            'success' => true,
+            'data' => $films
+        ], 200);
+        
+    } catch (\Exception $e) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Error retrieving films: ' . $e->getMessage()
+        ], 500);
+    }
+}
 }
