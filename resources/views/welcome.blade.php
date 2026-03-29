@@ -46,14 +46,33 @@
                 <input type="text" name="imagen" class="form-control" required>
             </div>
 
-            <div class="card mt-4">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+    </div>
+</div>
+
+<div class="card mt-4">
     <div class="card-header">Lista de Actores</div>
     <div class="card-body">
         <ul class="list-group">
             <li class="list-group-item">
                 <a href="{{ route('actors') }}">Ver todos los Actores</a>
             </li>
+            <li class="list-group-item">
+                <form action="{{ route('actorsByDecade') }}" method="GET" class="form-inline">
+                    <label for="decade" class="mr-2">Buscar por década:</label>
+                    <select name="decade" id="decade" class="form-control mr-2">
+                        <option value="1980">1980-1989</option>
+                        <option value="1990">1990-1999</option>
+                        <option value="2000" selected>2000-2009</option>
+                        <option value="2010">2010-2019</option>
+                        <option value="2020">2020-2029</option>
+                    </select>
+                    <button type="submit" class="btn btn-primary btn-sm">Buscar</button>
+                </form>
+            </li>
         </ul>
     </div>
 </div>
+
 @endsection
